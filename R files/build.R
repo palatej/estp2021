@@ -1,7 +1,7 @@
 
 wd<-getwd()
 
-setwd(dir = "C:/Users/Admin/Downloads/all")
+setwd(dir = XXX)
 
 install.packages("rJava")
 install.packages("RProtoBuf")
