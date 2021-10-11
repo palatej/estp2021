@@ -1,7 +1,7 @@
 
 wd<-getwd()
 
-setwd(dir = "C:/LocalData/DEV/PALATEJ/R")
+setwd(dir = "C:/Users/Admin/Downloads/all")
 
 install.packages("rJava")
 install.packages("RProtoBuf")

@@ -1,38 +1,11 @@
+suppressPackageStartupMessages(library(rjd3modelling))
 
-random.ar<-function(phi, length){
-  
-  start=rnorm(length(phi))
-  all<-vector(length=length)
-  for (i in seq_along(all)){
-    cur<-start%*%phi+rnorm(1)
-    all[[i]]<-cur
-    start<-c(start[-1],cur)
-  }
-  return (unlist(all))
-}
+airline<-sarima.model("airline", 12, d=1, theta = -.8, bd=1, btheta=-.6)
 
-random.ma<-function(theta, length){
-  
-  c<-c(1, rev(theta))
-  q<-length(theta)
-  rnd=rnorm(q+length)
-  all<-vector(length=length)
-  for (i in seq_along(all)){
-    cur<-c%*%rnd[seq(i, i+q)]
-    all[[i]]<-cur
-  }
-  return (unlist(all))
-}
+plot(sarima.random(airline, 600), type='l')
 
-random.arma<-function(theta, length){
-  
-  c<-c(1, rev(theta))
-  q<-length(theta)
-  rnd=rnorm(q+length)
-  all<-vector(length=length)
-  for (i in seq_along(all)){
-    cur<-c%*%rnd[seq(i, i+q)]
-    all[[i]]<-cur
-  }
-  return (unlist(all))
-}
+# complex root if phi(1)*phi(1)-4*phi(2) < 0
+sarima<-sarima.model("airline", phi=-1.5, .9, 12, d=1, theta = -.8, bd=1, btheta=-.6)
+
+plot(sarima.random(airline, 600, 10), type='l')
+

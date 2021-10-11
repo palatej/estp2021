@@ -20,4 +20,12 @@ vars<-sapply(seq(.3, -.99, -.01), function(bth){return (airline.variances(24,-.5
 # trend
 matplot(t(vars), type = 'b', pch=18)
 
-print(airline.decomposition(4,-.8,-.7))
+ucm1<-airline.decomposition(12,-.8,-.7)
+
+twk1<-ucarima.wk(ucm1, 1)
+plot(twk1$gain2, type='l')
+
+ucm2<-airline.decomposition(12,.1,-.7)
+
+twk2<-ucarima.wk(ucm2, 1)
+lines(twk2$gain2, col="blue")
