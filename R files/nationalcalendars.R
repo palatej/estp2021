@@ -35,9 +35,9 @@ td7.be<-ts.union(ts(td6.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
 td2.be<-ts.union(ts(td2.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
 td3.be<-ts.union(ts(td3.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
 
-td2.be<-`colnames<-`(td2.be, c("wd","lp"))
-td3.be<-`colnames<-`(td3.be, c("wd","sat", "lp"))
-td7.be<-`colnames<-`(td7.be, c("mon","tue", "wed", "thu", "fri","sat", "lp"))
+colnames(td2.be)<-c("wd","lp")
+colnames(td3.be)<-c("wd","sat", "lp")
+colnames(td7.be)<- c("mon","tue", "wed", "thu", "fri","sat", "lp")
 
 spec2.be<-RJDemetra::tramoseats_spec("RSAfull", 
                               tradingdays.option = "UserDefined",
