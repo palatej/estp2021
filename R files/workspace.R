@@ -15,6 +15,6 @@ mp<-get_object(ws, 1)
 items<-get_all_objects(mp)
 
 #Display the first item
-item1<-get_model(items[[1]], ws)
+item2<-get_model(items[[2]], ws)
 
 plot(item1, ask=F)

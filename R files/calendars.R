@@ -1,6 +1,6 @@
 library(rjd3modelling)
 
-e<-easter.dates(2000, 2020)
+e<-easter.dates(1900, 2100)
 
 print(rjd3modelling::td(12, c(1980,1), 11, contrasts = F, groups = c(1,1,1,1,2,2,0)))
 
