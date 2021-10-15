@@ -24,7 +24,7 @@ loglevel3.outliers<-function(s, cv=5){
   return (c(level_ll, log_ll))
 }
 
-all<-sapply(indprod, function(z){return (c(loglevel3.outliers(z, 100),log_level.outliers(z)))})
+all<-sapply(indprod, function(z){return (c(loglevel3.outliers(z, 100),loglevel3.outliers(z)))})
 plot(all[1,]-all[2,], type ='l')
 lines(all[3,]-all[4,], col ='red')
 

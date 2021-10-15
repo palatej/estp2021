@@ -14,26 +14,17 @@ calendar.holiday(cal, "ARMISTICE")
 calendar.holiday(cal, "CHRISTMAS")
 
 #leap year. Will be available with the calendars in rjd3modelling
-lp<-function(frequency, y0, nyears){
-  
-  if (frequency == 12) p0=2 else p0=1
-  d<-rep(0, frequency*nyears)
-  d[seq(p0, length(d), frequency)]<- -.25
-  del<-(4-(y0%%4))%%4
-  p0<-p0+del*frequency
-  d[seq(p0, length(d), frequency*4)]<-.75
-  return (ts(d, frequency = frequency, start=c(y0, 1)))  
-}
 
 
 td6.be<-rjd3modelling::htd(calendar = cal, frequency = 12, start = c(1980, 1), length = 600, groups = c(1,2,3,4,5,6,0), contrasts = T)
 td2.be<-rjd3modelling::htd(calendar = cal, frequency = 12, start = c(1980, 1), length = 600, groups = c(1,1,1,1,1,0,0), contrasts = T)
 td3.be<-rjd3modelling::htd(calendar = cal, frequency = 12, start = c(1980, 1), length = 600, groups = c(1,1,1,1,1,2,0), contrasts = T)
 
+lp<-lp.variable(12, c(1980,1), 600)
 # Add LP
-td7.be<-ts.union(ts(td6.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
-td2.be<-ts.union(ts(td2.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
-td3.be<-ts.union(ts(td3.be, frequency=12, start=c(1980,1)), lp(12, 1980, 50))
+td7.be<-ts.union(td6.be, lp)
+td2.be<-ts.union(td2.be, lp)
+td3.be<-ts.union(td3.be, lp)
 
 colnames(td2.be)<-c("wd","lp")
 colnames(td3.be)<-c("wd","sat", "lp")
